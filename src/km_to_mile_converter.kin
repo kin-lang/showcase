@@ -1,0 +1,11 @@
+# Define a conversion factor
+reka conversion_factor = 0.621371
+
+# Ask the user for the distance in kilometers
+reka kilometers = injiza_amakuru("Injiza intera mu birometero: ")
+
+# Convert the distance to miles
+reka miles = kilometers * conversion_factor
+
+# Display the result
+tangaza_amakuru(kilometers, " birometero bingana na ", miles, " maili.")
