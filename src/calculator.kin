@@ -1,24 +1,47 @@
+# Simple calculator
+# Reads two numbers and an operator from the user, and prints the result
+# Supports: addition(+), subtraction(-), multiplication(*), division(/)
+
+
+# Decorative banner
 tangaza_amakuru("=================")
 tangaza_amakuru("SIMPLE CALCULATOR")
 tangaza_amakuru("=================")
+
+# ------ User input ------
+
+# Asking for the first number
 reka a = injiza_amakuru("[1] Umubare wa mbere: ")
+
+# Asking for the operator
 reka op = injiza_amakuru("[2] Hitamo igikorwa (+ - * /): ")
+
+# Asking for the second number
 reka b = injiza_amakuru("[3] Umubare wa kabiri: ")
+
+# Declaring a variable to hold the result
 reka igisubizo;
 
+# ------ Functions to carry out the operations ------
+
+# Addition
 porogaramu_ntoya teranya(a, b) {
     tanga a + b
 }
 
+# Subtraction
 porogaramu_ntoya kuramo(a, b) {
     tanga a - b
 }
 
+# Multiplication
 porogaramu_ntoya kuba(a, b) {
     tanga a * b
 }
 
+# Division
 porogaramu_ntoya gabanya(a, b) {
+    # Guard to handle division by zero
     niba (b == 0) {
         tanga "Ntibishoboka kugabanya na zeru!"
     }
@@ -27,20 +50,27 @@ porogaramu_ntoya gabanya(a, b) {
     }
 }
 
+# --- Conditionals for branching on the chosen operator and assigning to igisubizo ---
+
+# Addition (+)
 niba (op == "+") {
     igisubizo = teranya(a, b)
 }
 
+# Subtraction (-)
 niba (op == "-") {
     igisubizo = kuramo(a, b)
 }
 
+# Multiplication (*)
 niba (op == "*") {
     igisubizo = kuba(a, b)
 }
 
+# Division (/)
 niba (op == "/") {
     igisubizo = gabanya(a, b)
 }
 
+# Printing the answer on the console
 tangaza_amakuru("=> Igisubizo: ", a, op, b, " ", "=", " ", igisubizo)
