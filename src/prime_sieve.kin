@@ -1,0 +1,50 @@
+# Sieve of Eratosthenes
+#
+# This program prints all the prime numbers between 2 and N.
+# A prime number is a number that can only be divided by 1 and itself.
+# For example: 2, 3, 5, 7, 11, 13...
+#
+# How it works:
+#   1. We build a list of numbers from index 0 to N, all starting with 1
+#      (meaning "not marked").
+#   2. 0 and 1 are not prime, so we set them to 0.
+#   3. For each number starting from 2: if it is still 1, all of its multiples
+#      (i*2, i*3, ...) are marked with 0 because they cannot be prime.
+#   4. At the end, the numbers that kept the value 1 are the primes.
+#
+# For N = 50, the result is: 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47
+
+reka N = 50
+
+# Build the list from index 0 to N, all initialized to 1.
+reka sieve = [1]
+subiramo_niba (KIN_URUTONDE.ingano(sieve) <= N) {
+  KIN_URUTONDE.ongera_kumusozo(sieve, 1)
+}
+
+# 0 and 1 are not prime numbers.
+sieve[0] = 0
+sieve[1] = 0
+
+# Mark the composites. Starting from 2, mark every multiple of i as 0.
+reka i = 2
+subiramo_niba (i * i <= N) {
+  niba (sieve[i] == 1) {
+    # The multiples of i start at i*i (the smaller ones were already marked).
+    reka j = i * i
+    subiramo_niba (j <= N) {
+      sieve[j] = 0
+      j = j + i
+    }
+  }
+  i = i + 1
+}
+
+# Print every index that is still 1, those are the prime numbers.
+reka p = 2
+subiramo_niba (p <= N) {
+  niba (sieve[p] == 1) {
+    tangaza_amakuru(p)
+  }
+  p = p + 1
+}
