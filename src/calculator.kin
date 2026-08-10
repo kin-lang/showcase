@@ -1,0 +1,46 @@
+tangaza_amakuru("=================")
+tangaza_amakuru("SIMPLE CALCULATOR")
+tangaza_amakuru("=================")
+reka a = injiza_amakuru("[1] Umubare wa mbere: ")
+reka op = injiza_amakuru("[2] Hitamo igikorwa (+ - * /): ")
+reka b = injiza_amakuru("[3] Umubare wa kabiri: ")
+reka igisubizo;
+
+porogaramu_ntoya teranya(a, b) {
+    tanga a + b
+}
+
+porogaramu_ntoya kuramo(a, b) {
+    tanga a - b
+}
+
+porogaramu_ntoya kuba(a, b) {
+    tanga a * b
+}
+
+porogaramu_ntoya gabanya(a, b) {
+    niba (b == 0) {
+        tanga "Ntibishoboka kugabanya na zeru!"
+    }
+    niba (b != 0) {
+        tanga a / b
+    }
+}
+
+niba (op == "+") {
+    igisubizo = teranya(a, b)
+}
+
+niba (op == "-") {
+    igisubizo = kuramo(a, b)
+}
+
+niba (op == "*") {
+    igisubizo = kuba(a, b)
+}
+
+niba (op == "/") {
+    igisubizo = gabanya(a, b)
+}
+
+tangaza_amakuru("=> Igisubizo: ", a, op, b, " ", "=", " ", igisubizo)
